@@ -9,6 +9,9 @@ import java.util.List;
  */
 public class Entry {
 
+    public static final String TIME_PATTERN = "HH:mm:ss,SSS";
+    public static final String TIME_SEP = " --> ";
+
     private String id;
     private LocalTime start;
     private LocalTime end;
@@ -42,11 +45,6 @@ public class Entry {
         return text;
     }
 
-    public void setText(List<String> text) {
-        this.text = text;
-
-    }
-
     @Override
     public String toString() {
         return "Entry{" +
@@ -57,12 +55,11 @@ public class Entry {
                 '}';
     }
 
-
     public String out() {
-        StringBuffer b = new StringBuffer();
+        StringBuilder b = new StringBuilder();
         String newline = System.getProperty("line.separator");
         b.append(id).append(newline);
-        b.append(start).append(" --> ").append(end).append(newline);
+        b.append(start).append(TIME_SEP).append(end).append(newline);
         for (String s : text) {
             b.append(s).append(newline);
         }
