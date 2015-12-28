@@ -1,8 +1,6 @@
 package at.aigner.subtitle;
 
-import org.joda.time.DateTime;
-import org.joda.time.LocalTime;
-
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
