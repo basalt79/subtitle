@@ -1,6 +1,7 @@
 package at.aigner.subtitle;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +10,10 @@ import java.util.List;
  */
 public class Entry {
 
-    public static final String TIME_PATTERN = "HH:mm:ss,SSS";
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(Entry.TIME_PATTERN);
     public static final String TIME_SEP = " --> ";
+
+    private static final String TIME_PATTERN = "HH:mm:ss,SSS";
 
     private String id;
     private LocalTime start;
@@ -59,7 +62,7 @@ public class Entry {
         StringBuilder b = new StringBuilder();
         String newline = System.getProperty("line.separator");
         b.append(id).append(newline);
-        b.append(start).append(TIME_SEP).append(end).append(newline);
+        b.append(start.format(DATE_TIME_FORMATTER)).append(TIME_SEP).append(end.format(DATE_TIME_FORMATTER)).append(newline);
         for (String s : text) {
             b.append(s).append(newline);
         }
